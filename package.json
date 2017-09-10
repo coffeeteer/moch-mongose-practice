@@ -1,0 +1,23 @@
+{
+  "name": "mocha-mongoose-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coffeeteer/mocha-mongoose-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coffeeteer/mocha-mongoose-practice/issues"
+  },
+  "homepage": "https://github.com/coffeeteer/mocha-mongoose-practice#readme",
+  "dependencies": {
+    "mocha": "^3.5.0",
+    "mongoose": "^4.11.10"
+  }
+}
