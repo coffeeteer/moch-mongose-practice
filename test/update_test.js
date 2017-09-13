@@ -1,16 +1,14 @@
 const assert = require('assert');
 const User = require('../src/user');
 
-let jen;
+describe('Updates documents', () => {
 
-describe('Updating records',() => {
-
+  let jen;
 
   beforeEach((done) => {
     jen = new User({name: 'Jen', likes: 0});
-
     jen.save()
-      .then(() => done())
+      .then(() => done());
   });
 
   function assertName(operation, done){
@@ -23,8 +21,12 @@ describe('Updating records',() => {
       });
   }
 
-  it('Updating an instance with the \'Set n Save\' method', (done) => {
+  it('Updates an instance with Set n Save', (done) => {
     jen.set('name', 'Jennifer');
-    assertName( jen.save(), done);
+    assertName(jen.save(), done);
+  });
+
+  it('A model instance instance update', (done) => {
+    assertName(jen.update({name: 'Jennifer'}), done);
   });
 });
