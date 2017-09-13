@@ -1,8 +1,7 @@
 const assert = require('assert');
 const User = require('../src/user');
 
-describe('Updates documents', () => {
-
+describe('Updating options with mongoose', () => {
   let jen;
 
   beforeEach((done) => {
@@ -22,11 +21,18 @@ describe('Updates documents', () => {
   }
 
   it('Updates an instance with Set n Save', (done) => {
-    jen.set('name', 'Jennifer');
+    jen.set('name', 'Jennifer')
     assertName(jen.save(), done);
   });
 
-  it('A model instance instance update', (done) => {
-    assertName(jen.update({name: 'Jennifer'}), done);
+  it('Updates with a model instance', (done)=>{
+    assertName(jen.update({name: 'Jennifer'}), done)
+  });
+
+  it('Updating a model class', (done) =>{
+    assertName(
+      User.findOneAndUpdate({name: 'Jen'}, {name: 'Jennifer'}),
+      done
+    );
   });
 });
