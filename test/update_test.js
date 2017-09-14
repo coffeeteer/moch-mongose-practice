@@ -1,16 +1,16 @@
 const assert = require('assert');
 const User = require('../src/user');
 
-describe('Updating options with mongoose', () => {
+describe('Different ways of updating documents', () => {
   let jen;
 
   beforeEach((done) => {
-    jen = new User({name: 'Jen', likes: 0});
-    jen.save()
-      .then(() => done());
+      jen = new User({name: 'Jen', likes: 0});
+      jen.save()
+        .then(() => done());
   });
 
-  function assertName(operation, done){
+  function assertName(operation, done) {
     operation
       .then(() => User.find({}))
       .then((users) => {
@@ -20,18 +20,32 @@ describe('Updating options with mongoose', () => {
       });
   }
 
-  it('Updates an instance with Set n Save', (done) => {
-    jen.set('name', 'Jennifer')
+  it('Updates a user with the Set n Save', (done) => {
+    jen.set('name', 'Jennifer');
     assertName(jen.save(), done);
   });
 
-  it('Updates with a model instance', (done)=>{
+  it('updating an instance with a model', (done) => {
     assertName(jen.update({name: 'Jennifer'}), done)
   });
 
-  it('Updating a model class', (done) =>{
+  it('Updating an instance model Class', (done) => {
+    assertName(
+      User.update({name: 'Jen'}, {name: 'Jennifer'}),
+      done
+    );
+  });
+
+  it('Updating a model with only with only one instance', (done) => {
     assertName(
       User.findOneAndUpdate({name: 'Jen'}, {name: 'Jennifer'}),
+      done
+    );
+  });
+
+  it('Updating a model using an Id', (done) => {
+    assertName(
+      User.findByIdAndUpdate(jen._id, {name: 'Jennifer'}),
       done
     );
   });
