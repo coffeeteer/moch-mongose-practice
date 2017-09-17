@@ -51,12 +51,12 @@ describe('Updating users', () => {
     });
 
     //Updating Operators
-    it('A user having their post count updated by one', (done) => {
+    it('Updating a user\'s post counts by 10', (done) => {
         User.update({name: 'Jen'}, {$inc: {likes: 10}})
             .then(() => User.findOne({name: 'Jen'}))
             .then((user) => {
                 assert(user.likes === 10);
                 done();
-            });
+            })
     });
 });
