@@ -20,8 +20,10 @@ const UserSchema = new Schema({
     }]
 });
 
+// a virtual method are additional fields for a given model, they can set manually or automatically.
+//Virtual properties don't get persisted in the database
 UserSchema.virtual('postCount').get(function() {
-    return this.post.length
+    return this.posts.length
 });
 
 const User = mongoose.model('user', UserSchema);
