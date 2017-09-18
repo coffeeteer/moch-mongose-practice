@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const PostSchema = require('../src.post');
+const PostSchema = require('../src/post');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -7,7 +7,7 @@ const UserSchema = new Schema({
     	type: String,
     	validate: {
     		validator: (name) => name.length > 2,
-    		message: 'Name must be longer than two characters'
+    		message: 'Name must be longer than two characters.'
     	},
     	required: [true, 'Name is required.']
     },
