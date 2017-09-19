@@ -16,7 +16,7 @@ describe('Subdocuments', () => {
             });
     });
 
-    it('Create a subdocument', (done) => {
+    it('Creates a subdocument', (done) => {
         let jen = new User({
             name: 'Jen',
             posts: []
@@ -25,8 +25,8 @@ describe('Subdocuments', () => {
         jen.save()
             .then(() => User.findOne({name: 'Jen'}))
             .then((user) => {
-                user.posts.push({posts: 'New Post'});
-                return user.save
+                user.posts.push({title: 'New Post'});
+                return user.save();
             })
             .then(() => User.findOne({name: 'Jen'}))
             .then((user) => {
@@ -34,4 +34,4 @@ describe('Subdocuments', () => {
                 done();
             });
     });
-})
+});
