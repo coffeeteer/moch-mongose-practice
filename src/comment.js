@@ -7,3 +7,7 @@ const CommentSchema = new Schema({
     // Schema.Types.ObjectId assigns the path to ref
     //the ref key refers to the model, in this case the User model
 });
+
+const Comment = mongoose.model('comment', CommentSchema);
+
+module.exports = Comment;

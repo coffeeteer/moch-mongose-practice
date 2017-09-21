@@ -35,14 +35,14 @@ describe('Subdocuments', () => {
             });
     });
 
-    it('can remove existing subdocument', (done) => {
-		const joe = new User({
-			name: 'Joe',
+    xit('can remove existing subdocument', (done) => {
+		const jen = new User({
+			name: 'Jen',
 			posts: [{title: 'New Title'}]
 		});
 
 		joe.save()
-			.then(() => User.findOne({ name: 'Joe' }))
+			.then(() => User.findOne({ name: 'Jen' }))
 			.then((user) => {
 				const post = user.posts[0];
 				post.remove();
